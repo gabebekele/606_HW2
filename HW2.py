@@ -24,7 +24,26 @@ class HomeWork2:
     #     3   4
 
     def constructBinaryTree(self, input) -> TreeNode:
-        pass
+        # check if empty tree
+        if input is None:
+            return TreeNode()
+        
+        stack = []
+   
+        for char in input:
+            # check if it a number
+            if char not in "+-*/":
+                stack.append(TreeNode(char))
+
+            # if operator    
+            else:
+                right = stack.pop()
+                left = stack.pop()
+                node = TreeNode(char, left, right)
+                stack.append(node)
+
+        return stack[-1]
+
 
 
 
