@@ -122,8 +122,22 @@ class Stack:
     # Use your own stack implementation to solve problem 3
 
     def __init__(self):
-        # TODO: initialize the stack
-        pass
+        self.nums = []
+        self.ind = -1
+
+    def push(self, val):
+        self.nums.append(val)
+        self.ind += 1
+    
+    def pop(self):
+        # check if empty
+        if self.ind == -1:
+            raise MemoryError("stack is already empty.")
+        else:
+            val = self.nums[-1]
+            del self.nums[-1]
+            self.ind -= 1
+            return val
 
     # Problem 3: Write code to evaluate a postfix expression using stack and return the integer value
     # Use stack which you implemented above for this problem
@@ -138,9 +152,49 @@ class Stack:
 
     # DO NOT USE EVAL function for evaluating the expression
 
-    def evaluatePostfix(exp: str) -> int:
-        # TODO: implement this using your Stack class
-        pass
+    def evaluatePostfix(self, exp: str) -> int:
+        # check if empty
+        if exp is None:
+            raise ValueError("Invalid postfix expression")
+        
+        s = Stack()
+        string = exp.split()
+
+
+
+        for char in string:
+            if char.isdigit():
+                s.push(int(char))
+
+            elif char in "+-*/":
+                # check if enough values for valid expression
+                try:
+                    x = s.pop()
+                    y = s.pop()
+                except IndexError:
+                    raise ValueError("Invalid postfix expression: not enough operands")
+                result = calc(x, y, char)
+                s.push(result)
+            else:
+                raise ValueError("Invalid postfix expression: unsupported") 
+        if s.ind == 0:
+            return s.pop()
+        else:
+            raise ValueError("Invalid postfix expression: too many operands")
+        
+        
+# Helper function for computation
+def calc(x, y, char):
+        if char == "+":
+            return y + x
+        elif char == "-":
+            return y - x
+        elif char == "*":
+            return y * x
+        else:
+            if x == 0:
+                raise ZeroDivisionError("Can't divide by zero")
+            return y // x
 
 
 # Main Function. Do not edit the code below
