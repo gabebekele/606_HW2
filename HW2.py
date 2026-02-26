@@ -221,6 +221,9 @@ def calc(x, y, char):
         single operand are returned directly to handle the simplest non-empty cases effectively.
 """
 
+"""
+ No external sources were used; all ideas are my own or from course lecture slides.
+"""
 
 # Main Function. Do not edit the code below
 if __name__ == "__main__":
