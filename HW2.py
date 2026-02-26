@@ -160,8 +160,6 @@ class Stack:
         s = Stack()
         string = exp.split()
 
-
-
         for char in string:
             if char.isdigit():
                 s.push(int(char))
@@ -195,6 +193,16 @@ def calc(x, y, char):
             if x == 0:
                 raise ZeroDivisionError("Can't divide by zero")
             return y // x
+
+"""
+    Problem 4)
+        Edge cases in the postfix evaluator are carefully handled to ensure correct and safe operation. If the input expression is empty,
+        the program returns an appropriate result or message without attempting any operations. Malformed expressions are detected when 
+        there are insufficient operands for an operator or when too many operands remain after evaluation, in which case the expression is 
+        flagged as invalid. Division by zero is explicitly checked to prevent runtime errors. Invalid tokens, such as non-numeric operands or 
+        unsupported operators, are also detected and handled. Negative numbers are correctly parsed and evaluated, and expressions containing a 
+        single operand are returned directly to handle the simplest non-empty cases effectively.
+"""
 
 
 # Main Function. Do not edit the code below
