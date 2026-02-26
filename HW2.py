@@ -23,6 +23,12 @@ class HomeWork2:
     #      / \
     #     3   4
 
+    """
+        In order to construct a binary tree we can use a stack implementation to ensure the correct parent child structure. The stack allows us to easily create a root
+        node and manipulate the values that are attached/preceeding it. If it is a digit the value will be appended to the stack, where any potential parent nodes can pull
+        it to form a left or right child. If the value in the input it an operand we want to create a node with the previous two stack elements as its children. 
+    """
+
     def constructBinaryTree(self, input) -> TreeNode:
         # check if empty tree
         if input is None:
@@ -51,6 +57,12 @@ class HomeWork2:
     # return an array of elements of a prefix expression
     # expected output for the tree from problem 1 is [*,+,3,4,2]
     # you can see the examples in p2_traversals.csv
+
+    """
+        In order to solve these problems the correct order of recursive calls is needed to append values to the resulting calls.
+        This allows each to be solved with a simple structure that is nearly identical to the others for fast order analysis.
+    """
+
 
     def prefixNotationPrint(self, head: TreeNode) -> list:
         # check if empty tree
@@ -151,6 +163,11 @@ class Stack:
     # handle division by zero appropriately
 
     # DO NOT USE EVAL function for evaluating the expression
+
+    """
+    Postfix logic works perfectly using stack implementation since, barring edge cases, all that needed to be done is push operands
+    into the stack and pop out two to be used in computation whenever an operator is encountered in the expression.
+    """
 
     def evaluatePostfix(self, exp: str) -> int:
         # check if empty
